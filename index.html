@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes" />
+  <title>DevClaude Pro – AI Web Developer</title>
+  <!-- Font Awesome & Prism (loaded from CDN) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <!-- Your custom styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="app">
+  <header>
+    <div class="logo"><i class="fas fa-code"></i> DevClaude Pro</div>
+    <div class="actions">
+      <button id="themeToggle"><i class="fas fa-moon"></i> <span>Theme</span></button>
+      <button id="settingsToggle"><i class="fas fa-cog"></i> <span>Settings</span></button>
+      <button id="exportBtn"><i class="fas fa-download"></i> <span>Export</span></button>
+      <button id="clearBtn"><i class="fas fa-trash"></i> <span>Clear</span></button>
+    </div>
+  </header>
+
+  <div class="main">
+    <!-- Chat Panel -->
+    <div class="chat-panel">
+      <div class="panel-header">
+        <span>💬 Conversation</span>
+        <span id="projectDisplay" style="font-size:0.8rem; opacity:0.7;">Untitled</span>
+      </div>
+      <div class="messages-container" id="messagesContainer">
+        <div id="messages"></div>
+      </div>
+      <div class="input-area">
+        <button class="voice" id="voiceBtn" aria-label="Voice input"><i class="fas fa-microphone"></i></button>
+        <textarea id="userInput" rows="1" placeholder="Describe your website or feature..."></textarea>
+        <button id="sendBtn" aria-label="Send message"><i class="fas fa-paper-plane"></i></button>
+      </div>
+    </div>
+
+    <!-- Preview Panel -->
+    <div class="preview-panel">
+      <div class="panel-header">
+        <span>📱 Preview</span>
+        <div class="tabs">
+          <button class="active" data-tab="preview">Preview</button>
+          <button data-tab="code">Code</button>
+        </div>
+      </div>
+      <div class="preview-content">
+        <iframe id="previewIframe" srcdoc="<html><body style='background:#f5f7fa;display:flex;justify-content:center;align-items:center;height:100%;font-family:sans-serif;color:#888;'><p>Your site will appear here</p></body></html>"></iframe>
+        <div class="code-editor" id="codeEditor"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Settings Overlay -->
+<div class="settings-overlay" id="settingsOverlay">
+  <div class="settings-card">
+    <h2>⚙️ DevClaude Settings</h2>
+    <label for="projectNameInput">Project Name</label>
+    <input id="projectNameInput" placeholder="My Awesome Site" value="Untitled" />
+    <label for="systemPromptInput">System Prompt (persona)</label>
+    <textarea id="systemPromptInput" rows="3">You are DevClaude, a senior full‑stack web developer. You respond with clean, modern, accessible, and well‑commented code. When given a description, you produce complete HTML, CSS, and JavaScript (or other languages) as needed. You ask clarifying questions only if the request is ambiguous. Your tone is professional but friendly. Always output the full code in a single code block with language specified.</textarea>
+    <label for="apiKeyInput">Anthropic API Key (get from console.anthropic.com)</label>
+    <input id="apiKeyInput" type="password" placeholder="sk-ant-..." />
+    <div class="actions">
+      <button class="secondary" id="closeSettings">Close</button>
+      <button id="saveSettings">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- Prism.js and JSZip for syntax highlighting and export -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-typescript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-php.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<!-- Your custom script -->
+<script src="script.js"></script>
+</body>
+</html>
